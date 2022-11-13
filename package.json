@@ -1,0 +1,20 @@
+{
+  "name": "animesconsulting",
+  "version": "1.0.0",
+  "description": "This project have the objective to consult and show Studio Ghibli films",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rajmal1/AnimesConsulting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rajmal1/AnimesConsulting/issues"
+  },
+  "homepage": "https://github.com/Rajmal1/AnimesConsulting#readme"
+}
