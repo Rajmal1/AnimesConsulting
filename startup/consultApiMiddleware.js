@@ -1,16 +1,15 @@
 const axios = require('axios');
 const url = process.env.GHIBLI_API;
+const filmService = require('../app/services/filmService');
 const winston = require('winston');
 
 
-module.exports = consultarApi = async (req, res, next) => {
+async function consultarApi() {
     try {
         const reqConfig = montarRequest();
-        const films = await axios(reqConfig);
+        const { data } = await axios(reqConfig);
 
-        verificarFilmes(req, films);
-
-        next();
+        await filmService.criarFilmes(data);
     } catch (err) {
         winston.error(err);
         throw new Error('Erro ao consultar API do Sutdio Ghibli');
@@ -24,10 +23,4 @@ function montarRequest() {
     }
 }
 
-function verificarFilmes(req, films) {
-    if (!films || films.lenght <= 0) {
-        throw new Error('Não foi possível encontrar os filmes.')
-    }
-
-    req.films = films;
-}
+module.exports = consultarApi;

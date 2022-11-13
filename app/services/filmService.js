@@ -3,31 +3,41 @@ const filmModel = require('../models/filmModel');
 const filmServices = {};
 
 filmServices.criarFilmes = async (filmsArray) => {
-    if (!filmsArray || filmsArray.lenght <= 0) {
-        throw new Error('Não foi encontrado nenhum filme');
+    try {
+        if (!filmsArray || filmsArray.lenght <= 0) {
+            throw new Error('Não foi encontrado nenhum filme');
+        }
+
+        const filmsInsert = montarArrayFilmes(filmsArray);
+
+        for (const element of filmsInsert) {
+            await filmModel.findOneAndUpdate({ titulo: element.titulo },
+                { $set: element },
+                { upsert: true });
+        }
+    } catch (err) {
+        console.log(err.message);
     }
-
-    const filmsInsert = montarArrayFilmes(filmsArray);
-
-    return await filmModel.create(filmsInsert);
 };
 
-filmServices.buscarFilmes = async (page = 1, limit = 200) => {
+filmServices.buscarFilmes = async (page = 1, limit = 10) => {
     return await filmModel.find()
-        .limit(limit * 1)
+        .limit(limit)
         .skip((page - 1) * limit)
-        .sort('-dataLancamento');
+        .sort({ dataLancamento: +1 });
 };
 
 function montarArrayFilmes(filmsArray) {
     return filmsArray.map(e => {
-        return new filmModel({
+        return {
             titulo: e.title,
             titulo_original: e.original_title,
             descricao: e.description,
             dataLancamento: e.release_date,
             pontuacao: e.rt_score
-        });
+        };
     });
 
 }
+
+module.exports = filmServices;

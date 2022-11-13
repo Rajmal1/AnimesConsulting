@@ -8,7 +8,8 @@ const filmSchema = new Schema({
     dataLancamento: String,
     pontuacao: Number
 }, {
-    collection: 'Films'
+    collection: 'Films',
+    versionKey: false
 });
 
 const Film = mongoose.model('Film', filmSchema);
