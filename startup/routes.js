@@ -1,7 +1,9 @@
 const express = require('express');
 const filmsController = require('../app/controllers/filmsController');
 
-module.exports = function (app) {
+function routes(app) {
     app.use(express.json());
     app.use('/api/films', filmsController);
 }
+
+module.exports = routes;

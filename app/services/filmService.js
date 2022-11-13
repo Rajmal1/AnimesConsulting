@@ -3,20 +3,16 @@ const filmModel = require('../models/filmModel');
 const filmServices = {};
 
 filmServices.criarFilmes = async (filmsArray) => {
-    try {
-        if (!filmsArray || filmsArray.lenght <= 0) {
-            throw new Error('Não foi encontrado nenhum filme');
-        }
+    if (!filmsArray || filmsArray.lenght <= 0) {
+        throw new Error('Não foi encontrado nenhum filme');
+    }
 
-        const filmsInsert = montarArrayFilmes(filmsArray);
+    const filmsInsert = montarArrayFilmes(filmsArray);
 
-        for (const element of filmsInsert) {
-            await filmModel.findOneAndUpdate({ titulo: element.titulo },
-                { $set: element },
-                { upsert: true });
-        }
-    } catch (err) {
-        console.log(err.message);
+    for (const element of filmsInsert) {
+        await filmModel.findOneAndUpdate({ titulo: element.titulo },
+            { $set: element },
+            { upsert: true });
     }
 };
 
