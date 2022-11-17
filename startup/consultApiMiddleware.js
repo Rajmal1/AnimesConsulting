@@ -6,20 +6,15 @@ const winston = require('winston');
 
 async function consultarApi() {
     try {
-        const reqConfig = montarRequest();
-        const { data } = await axios(reqConfig);
+        const { data } = await axios({
+            method: 'get',
+            url: url
+        });
 
-        await filmService.criarFilmes(data);
+        await filmService.createFilms(data);
     } catch (err) {
         winston.error(err);
-        throw new Error('Erro ao consultar API do Sutdio Ghibli');
-    }
-}
-
-function montarRequest() {
-    return {
-        method: 'get',
-        url: url
+        throw new Error('Error when querying the Studio Ghibli API');
     }
 }
 

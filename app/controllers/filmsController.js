@@ -7,9 +7,9 @@ router.get('/', async (req, res) => {
     try {
         const { page, limit } = req.query;
 
-        const films = await filmsService.buscarFilmes(page, limit);
+        const films = await filmsService.searchFilms(page, limit);
 
-        if (!films) {
+        if (!films || films.length <= 0) {
             res.status(204).send();
         }
 
