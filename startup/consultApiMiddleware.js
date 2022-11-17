@@ -11,10 +11,10 @@ async function consultarApi() {
             url: url
         });
 
-        await filmService.criarFilmes(data);
+        await filmService.createFilms(data);
     } catch (err) {
         winston.error(err);
-        throw new Error('Erro ao consultar API do Sutdio Ghibli');
+        throw new Error('Error when querying the Studio Ghibli API');
     }
 }
 
