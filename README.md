@@ -19,4 +19,4 @@ To the project to run properly, node 17.x or superior is needed.
 
 ## API Documentation
 
-For a better experience the API documentation has been placed in `http://localhost:3000/AnimesConsultingAPI.html`
+For a better experience, the API documentation has been placed at `http://localhost:3000/AnimesConsultingAPI.html'. The project must be running for the documentation to work.
