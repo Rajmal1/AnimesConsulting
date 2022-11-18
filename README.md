@@ -9,7 +9,7 @@ To the project to run properly, node 17.x or superior is needed.
 1.  Clone the project.
 2.  Verify if the .env file follow the structure:
 
-> PORT="3000"
+> PORT="3000"\n
 > LOGS_DIR="./logs"
 > GHIBLI_API="https://ghibliapi.herokuapp.com/films?200"
 > URL_DB_GUEST="mongodb+srv://guest:oAQ7snBfMdHdSKh5@cluster0.eob50ps.mongodb.net/test"
@@ -19,4 +19,4 @@ To the project to run properly, node 17.x or superior is needed.
 
 ## API Documentation
 
-For a better experience, the API documentation has been placed at `http://localhost:3000/AnimesConsultingAPI.html'. The project must be running for the documentation to work.
+For a better experience, the API documentation has been placed at `http://localhost:3000/AnimesConsultingAPI.html`. The project must be running for the documentation to work.
